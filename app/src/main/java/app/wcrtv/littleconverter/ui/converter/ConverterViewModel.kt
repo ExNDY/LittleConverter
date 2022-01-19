@@ -2,28 +2,26 @@ package app.wcrtv.littleconverter.ui.converter
 
 import androidx.lifecycle.ViewModel
 import app.wcrtv.littleconverter.model.DataJson
-import app.wcrtv.littleconverter.data.network.Common
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import app.wcrtv.littleconverter.model.Valute
+import app.wcrtv.littleconverter.repository.Repository
 
 class ConverterViewModel : ViewModel() {
+    private var repository = Repository()
+    private var data: DataJson? = null
+    private var choosenCurrencyFrom = "RUB"
+    private var choosenCurrencyTo = "USD"
     // TODO: Implement the ViewModel
     fun initData(){
-        val mService = Common.retrofitServices
+        val dataJson: DataJson? = repository.loadData()
+        var valute: Valute? = dataJson?.valute?.get("AUD")
+        var from = getValuteValue("RUB")
+    }
 
-        mService.getLatestRates().enqueue(object : Callback<DataJson?> {
-            override fun onResponse(call: Call<DataJson?>, response: Response<DataJson?>) {
-                if (response.isSuccessful) {
-                    var dataJson: DataJson? = response.body()
+    private fun getValuteValue(charCode: String): Double? {
+        if (data != null){
+            return data?.valute?.get(charCode)?.value
+        }
 
-                }
-            }
-
-            override fun onFailure(call: Call<DataJson?>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
+        return 0.0
     }
 }

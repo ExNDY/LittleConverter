@@ -12,5 +12,5 @@ data class DataJson(
     @SerializedName("Timestamp")
     var timestamp: String,
     @SerializedName("Valute")
-    var value: Map<String, Valute>
+    var valute: Map<String, Valute>
 )

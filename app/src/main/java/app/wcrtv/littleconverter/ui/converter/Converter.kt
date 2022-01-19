@@ -25,7 +25,7 @@ class Converter : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ConverterViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ConverterViewModel::class.java]
         // TODO: Use the ViewModel
     }
 
