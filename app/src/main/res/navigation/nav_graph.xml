@@ -3,11 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/converter">
-
+    app:startDestination="@id/currencyRateListFragment">
     <fragment
-        android:id="@+id/converter"
-        android:name="app.wcrtv.littleconverter.ui.converter.Converter"
-        android:label="converter_fragment"
-        tools:layout="@layout/converter_fragment" />
+        android:id="@+id/currencyRateListFragment"
+        android:name="app.wcrtv.littleconverter.ui.currencyratelist.CurrencyRateListFragment"
+        android:label="fragment_currency_rate_list"
+        tools:layout="@layout/fragment_currency_rate_list" />
+    <fragment
+        android:id="@+id/converterFragment"
+        android:name="app.wcrtv.littleconverter.ui.converter.ConverterFragment"
+        android:label="fragment_converter"
+        tools:layout="@layout/fragment_converter" />
 </navigation>

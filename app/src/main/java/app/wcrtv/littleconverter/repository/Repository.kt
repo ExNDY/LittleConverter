@@ -1,31 +1,36 @@
 package app.wcrtv.littleconverter.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import app.wcrtv.littleconverter.data.network.Common
-import app.wcrtv.littleconverter.model.DataJson
-import app.wcrtv.littleconverter.model.Valute
+import app.wcrtv.littleconverter.data.network.model.CbrResponse
+import app.wcrtv.littleconverter.data.network.model.Valute
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class Repository: DataStoreDAO{
     private val mService = Common.retrofitServices
+    private val _response = MutableLiveData<CbrResponse>()
 
-    override fun loadData():DataJson? {
-        var dataJson: DataJson? = null
+    override fun loadData() {
+        var cbrResponse: CbrResponse? = null
 
-        mService.getLatestRates().enqueue(object : Callback<DataJson?> {
-            override fun onResponse(call: Call<DataJson?>, response: Response<DataJson?>) {
+        mService.getLatestRates().enqueue(object : Callback<CbrResponse?> {
+            override fun onResponse(call: Call<CbrResponse?>, response: Response<CbrResponse?>) {
                 if (response.isSuccessful) {
-                    dataJson = response.body()
+                    _response.postValue(response.body())
                 }
             }
 
-            override fun onFailure(call: Call<DataJson?>, t: Throwable) {
+            override fun onFailure(call: Call<CbrResponse?>, t: Throwable) {
                 t.printStackTrace()
             }
         })
+    }
 
-        return dataJson
+    fun getLoadedData():LiveData<CbrResponse>{
+        return _response
     }
 
     override fun restoreData(): ArrayList<Valute> {

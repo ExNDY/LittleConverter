@@ -1,4 +1,4 @@
-package app.wcrtv.littleconverter.model
+package app.wcrtv.littleconverter.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,6 +11,8 @@ data class Valute(
     var charCode: String,
     @SerializedName("Nominal")
     var nominal: Int,
+    @SerializedName("Name")
+    var name: String,
     @SerializedName("Value")
     var value: Double,
     @SerializedName("Previous")

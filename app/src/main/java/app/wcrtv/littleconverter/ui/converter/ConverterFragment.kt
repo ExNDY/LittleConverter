@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import app.wcrtv.littleconverter.R
 
-class Converter : Fragment() {
+class ConverterFragment : Fragment() {
 
     companion object {
-        fun newInstance() = Converter()
+        fun newInstance() = ConverterFragment()
     }
 
     private lateinit var viewModel: ConverterViewModel
@@ -20,7 +20,7 @@ class Converter : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.converter_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_converter, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

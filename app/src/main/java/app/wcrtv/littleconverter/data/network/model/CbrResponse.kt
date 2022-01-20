@@ -1,8 +1,8 @@
-package app.wcrtv.littleconverter.model
+package app.wcrtv.littleconverter.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DataJson(
+data class CbrResponse(
     @SerializedName("Date")
     var date: String,
     @SerializedName("PreviousDate")

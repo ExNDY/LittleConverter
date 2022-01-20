@@ -1,10 +1,9 @@
 package app.wcrtv.littleconverter.repository
 
-import app.wcrtv.littleconverter.model.DataJson
-import app.wcrtv.littleconverter.model.Valute
+import app.wcrtv.littleconverter.data.network.model.Valute
 
 interface DataStoreDAO {
-    fun loadData(): DataJson?
+    fun loadData()
     fun restoreData():ArrayList<Valute>
     fun saveData(dataList: ArrayList<Valute>)
     fun deleteData()
