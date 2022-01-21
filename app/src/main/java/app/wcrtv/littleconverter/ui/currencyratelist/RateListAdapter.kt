@@ -1,17 +1,15 @@
 package app.wcrtv.littleconverter.ui.currencyratelist
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import app.wcrtv.littleconverter.data.network.model.Valute
 import app.wcrtv.littleconverter.databinding.RateListItemBinding
+import java.util.ArrayList
 
 class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
     private var valuteList: ArrayList<Valute> = ArrayList()
-
-    /*constructor(rateList: ArrayList<Valute>):this(){
-        this.valuteList = rateList
-    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelHolder {
         val itemBinding = RateListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,10 +27,13 @@ class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
         return valuteList.size
     }
 
-    fun updateDataSet(valuteList: ArrayList<Valute>){
-        this.valuteList.clear()
-        this.valuteList.addAll(valuteList)
+    @SuppressLint("NotifyDataSetChanged")
+    fun setValuteList(valuteList: ArrayList<Valute>){
+        this.valuteList = valuteList
+
+        notifyDataSetChanged()
     }
+
     inner class ModelHolder(private val itemBinding: RateListItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
@@ -62,6 +63,7 @@ class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
 
         private fun bindDifferenceValue(value: Double, previous: Double){
             val diff = value - previous
+
             itemBinding.difference.text = diff.toString()
         }
     }

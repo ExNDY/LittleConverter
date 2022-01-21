@@ -21,7 +21,7 @@
         android:layout_margin="5dp"
         android:layout_weight="1"
         android:autoSizeMaxTextSize="20sp"
-        android:autoSizeMinTextSize="16sp"
+        android:autoSizeMinTextSize="12sp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:text="@string/charCode"

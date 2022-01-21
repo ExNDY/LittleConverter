@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/currencyRateList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="0dp"
-    android:paddingTop="0dp"
-    android:paddingRight="0dp"
-    android:paddingBottom="0dp"
     android:scrollbars="vertical"
+    tools:listitem="@layout/rate_list_item"
+    tools:itemCount="8"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:context=".ui.currencyratelist.CurrencyRateListFragment" />

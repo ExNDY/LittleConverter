@@ -1,4 +1,4 @@
-package app.wcrtv.littleconverter.data.network
+package app.wcrtv.littleconverter.data.network.trash
 
 import app.wcrtv.littleconverter.utils.Constants
 import okhttp3.OkHttpClient

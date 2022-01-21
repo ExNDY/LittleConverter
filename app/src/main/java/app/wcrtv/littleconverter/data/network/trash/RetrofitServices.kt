@@ -1,4 +1,4 @@
-package app.wcrtv.littleconverter.data.network
+package app.wcrtv.littleconverter.data.network.trash
 
 import app.wcrtv.littleconverter.data.network.model.CbrResponse
 import retrofit2.Call

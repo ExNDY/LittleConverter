@@ -6,7 +6,7 @@ import app.wcrtv.littleconverter.data.network.model.Valute
 import app.wcrtv.littleconverter.repository.Repository
 
 class ConverterViewModel : ViewModel() {
-    private var repository = Repository()
+    //private var repository = Repository()
     private var data: CbrResponse? = null
     private var choosenCurrencyFrom = "RUB"
     private var choosenCurrencyTo = "USD"
