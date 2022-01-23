@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#DDDDDD</color>
+    <!-- RateList Item Colors -->
+    <color name="textColorGrey">#353535</color>
+    <color name="textColorLightGrey">#A6A6A6</color>
+    <color name="differenceColorRed">#EF5350</color>
+    <color name="differenceColorGreen">#9CCC65</color>
 </resources>

@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/drawable/ic_source_icons_list.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/drawable/ic_source_icons_lot_of_cash.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/app_activity.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/converter_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/currency_rate_list_fragment.xml" value="0.2" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/fragment_converter.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/fragment_currency_rate_list.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/rate_list_item.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/layout/rate_list_item.xml" value="0.25" />
+        <entry key="..\:/Users/Endy/AndroidStudioProjects/APFP/LittleConverter/app/src/main/res/menu/bottom_bar_tabs.xml" value="0.2203125" />
       </map>
     </option>
   </component>

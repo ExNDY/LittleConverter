@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_ratelist"
+        android:enabled="true"
+        android:icon="@drawable/ic_source_icons_list"
+        android:title="@string/currency_rates_list" />
+    <item android:id="@+id/nav_converter"
+        android:enabled="true"
+        android:icon="@drawable/ic_source_icons_lot_of_cash"
+        android:title="@string/currency_converter"/>
+</menu>

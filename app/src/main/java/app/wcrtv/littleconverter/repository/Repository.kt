@@ -1,30 +1,42 @@
 package app.wcrtv.littleconverter.repository
 
-import app.wcrtv.littleconverter.data.network.RetrofitService
-import app.wcrtv.littleconverter.data.network.model.Valute
+import android.content.Context
+import androidx.lifecycle.LiveData
+import app.wcrtv.littleconverter.data.local.roomdb.RoomLocalDataBase
+import app.wcrtv.littleconverter.data.local.roomdb.RoomLocalDataBaseDAO
+import app.wcrtv.littleconverter.model.CbrResponse
+import app.wcrtv.littleconverter.data.network.retrofit.RetrofitService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
-class Repository(private val retrofitService: RetrofitService) : DataStoreDAO{
+class Repository(private val retrofitService: RetrofitService) {
     //private val retrofitService = RetrofitService.getInstance()
     fun getLatestDailyRates() = retrofitService.getLatestDailyRates()
 
+    companion object {
+        var localDataBase: RoomLocalDataBase? = null
 
-    override fun loadData() {
-        TODO("Not yet implemented")
-    }
+        var cbrResponse: LiveData<CbrResponse>? = null
 
-    override fun restoreData(): ArrayList<Valute> {
-        TODO("Not yet implemented")
-    }
+        fun initializeDB(context: Context): RoomLocalDataBase {
+            return RoomLocalDataBase.getLocalData(context)
+        }
 
-    override fun saveData(dataList: ArrayList<Valute>) {
-        TODO("Not yet implemented")
-    }
+        fun insertData(context: Context, cbrResponse: CbrResponse) {
+            localDataBase = initializeDB(context)
 
-    override fun deleteData() {
-        TODO("Not yet implemented")
-    }
+            CoroutineScope(IO).launch {
+                localDataBase!!.localDataBase().InsertData(cbrResponse)
+            }
+        }
 
-    override fun updateData(dataList: ArrayList<Valute>) {
-        TODO("Not yet implemented")
+        fun getLocalData(context: Context) : LiveData<CbrResponse>?{
+            localDataBase = initializeDB(context)
+
+            cbrResponse = localDataBase!!.localDataBase().getAllData()
+
+            return cbrResponse
+        }
     }
 }

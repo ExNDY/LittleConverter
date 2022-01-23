@@ -3,5 +3,9 @@
     <string name="charCode">000</string>
     <string name="value">0.00</string>
     <string name="name">Name of currency</string>
-    <string name="nominal">nominal</string>
+    <string name="nominal">Nominal: </string>
+    <string name="rouble">₽</string>
+    <!-- Tabs names-->
+    <string name="currency_rates_list">Rates list</string>
+    <string name="currency_converter">Converter</string>
 </resources>

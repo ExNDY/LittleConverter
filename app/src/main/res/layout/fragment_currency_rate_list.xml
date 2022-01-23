@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/currencyRateList"
-    android:layout_width="match_parent"
+    android:id="@+id/swipeToRefresh"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    tools:listitem="@layout/rate_list_item"
-    tools:itemCount="8"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".ui.currencyratelist.CurrencyRateListFragment" />
+    android:layout_width="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/currencyRateList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/rate_list_item"
+        tools:itemCount="8"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:context=".ui.currencyratelist.CurrencyRateListFragment" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

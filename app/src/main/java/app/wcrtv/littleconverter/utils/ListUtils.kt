@@ -1,6 +1,6 @@
 package app.wcrtv.littleconverter.utils
 
-import app.wcrtv.littleconverter.data.network.model.Valute
+import app.wcrtv.littleconverter.model.Valute
 
 object ListUtils {
     fun convertMapToList(map: Map<String, Valute>): ArrayList<Valute> {

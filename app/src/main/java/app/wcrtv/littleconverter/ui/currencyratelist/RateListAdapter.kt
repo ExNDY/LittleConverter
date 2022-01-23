@@ -1,14 +1,19 @@
 package app.wcrtv.littleconverter.ui.currencyratelist
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import app.wcrtv.littleconverter.data.network.model.Valute
+import app.wcrtv.littleconverter.R
+import app.wcrtv.littleconverter.model.Valute
 import app.wcrtv.littleconverter.databinding.RateListItemBinding
-import java.util.ArrayList
+import app.wcrtv.littleconverter.utils.TextUtils
+import java.util.*
 
-class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
+class RateListAdapter(private val context: Context) : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
     private var valuteList: ArrayList<Valute> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModelHolder {
@@ -42,7 +47,11 @@ class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
             bindName(valute.name)
             bindNominal(valute.nominal)
             bindValue(valute.value)
-            bindDifferenceValue(valute.value, valute.previous)
+            bindDifferenceValue(valute.getDifference())
+
+            itemBinding.container.setOnClickListener{
+                Toast.makeText(context, valute.name, Toast.LENGTH_SHORT).show()
+            }
         }
 
         private fun bindCharCode(charCode: String){
@@ -54,17 +63,28 @@ class RateListAdapter : RecyclerView.Adapter<RateListAdapter.ModelHolder>() {
         }
 
         private fun bindNominal(nominal: Int){
-            itemBinding.nominal.text = nominal.toString()
+            val stringValue = context.resources.getString(R.string.nominal) + nominal
+            itemBinding.nominal.text = stringValue
         }
 
         private fun bindValue(value: Double){
-            itemBinding.currencyValue.text = value.toString()
+            val stringValue = TextUtils.formattingDifferenceValue(value) + context.resources.getString(R.string.rouble)
+
+            itemBinding.currencyValue.text = stringValue
         }
 
-        private fun bindDifferenceValue(value: Double, previous: Double){
-            val diff = value - previous
+        private fun bindDifferenceValue(value: Double){
+            if (value > 0) {
+                itemBinding.difference.setTextColor(ContextCompat.getColor(context, R.color.differenceColorGreen))
+            }
 
-            itemBinding.difference.text = diff.toString()
+            if (value < 0) {
+                itemBinding.difference.setTextColor(ContextCompat.getColor(context, R.color.differenceColorRed))
+            }
+
+            val formattedText = "(" + TextUtils.formattingDifferenceValue(value) + ")"
+
+            itemBinding.difference.text = formattedText
         }
     }
 }

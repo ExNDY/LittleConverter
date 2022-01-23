@@ -1,9 +1,7 @@
 package app.wcrtv.littleconverter.ui.converter
 
 import androidx.lifecycle.ViewModel
-import app.wcrtv.littleconverter.data.network.model.CbrResponse
-import app.wcrtv.littleconverter.data.network.model.Valute
-import app.wcrtv.littleconverter.repository.Repository
+import app.wcrtv.littleconverter.model.CbrResponse
 
 class ConverterViewModel : ViewModel() {
     //private var repository = Repository()
@@ -14,7 +12,7 @@ class ConverterViewModel : ViewModel() {
     fun initData(){
         //val cbrResponse: CbrResponse? = repository.loadData()
         //var valute: Valute? = cbrResponse?.valute?.get("AUD")
-        var from = getValuteValue("RUB")
+        //var from = getValuteValue("RUB")
     }
 
     private fun getValuteValue(charCode: String): Double? {

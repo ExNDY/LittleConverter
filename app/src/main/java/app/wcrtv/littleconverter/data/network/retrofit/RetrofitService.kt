@@ -1,6 +1,6 @@
-package app.wcrtv.littleconverter.data.network
+package app.wcrtv.littleconverter.data.network.retrofit
 
-import app.wcrtv.littleconverter.data.network.model.CbrResponse
+import app.wcrtv.littleconverter.model.CbrResponse
 import app.wcrtv.littleconverter.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Call
