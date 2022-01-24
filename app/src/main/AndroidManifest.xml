@@ -13,6 +13,7 @@
         android:theme="@style/Theme.LittleConverter">
         <activity
             android:name=".ui.AppActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

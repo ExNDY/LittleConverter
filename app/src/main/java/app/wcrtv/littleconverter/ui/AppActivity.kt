@@ -31,6 +31,7 @@ class AppActivity : AppCompatActivity() {
                 this, navController, appBarConfiguration
             )
         }
+
         if (navController != null) {
             NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
         }

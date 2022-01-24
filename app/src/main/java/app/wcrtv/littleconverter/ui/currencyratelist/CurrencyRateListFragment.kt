@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import app.wcrtv.littleconverter.data.network.retrofit.RetrofitService
 import app.wcrtv.littleconverter.databinding.FragmentCurrencyRateListBinding
 import app.wcrtv.littleconverter.extension.CustomViewModelFactory
@@ -22,7 +22,7 @@ class CurrencyRateListFragment : Fragment() {
     private lateinit var viewModel: CurrencyRateListViewModel
     private var rateListAdapter: RateListAdapter? = null
     private val retrofitService = RetrofitService.getInstance()
-
+    private var wasLoaded = false
     private var _binding: FragmentCurrencyRateListBinding? = null
     private val binding get() = _binding!!
 
@@ -49,7 +49,30 @@ class CurrencyRateListFragment : Fragment() {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
 
+        if (savedInstanceState == null) {
+            context?.let { it ->
+                viewModel.restoreData(it)!!.observe(this, {
+                    if (it != null) {
+                        viewModel.restoreFromData(it)
+                    }
+                }) }
+
+            context?.let { viewModel.loadLatestData(it) }
+        }
+
         return binding.root
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        if (savedInstanceState != null){
+            wasLoaded = savedInstanceState.getBoolean("wasLoaded")
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("wasLoaded", wasLoaded)
     }
 
     private fun initSwipeToRefresh() {
@@ -60,6 +83,7 @@ class CurrencyRateListFragment : Fragment() {
 
     private fun initRateList() {
         rateListAdapter = context?.let { RateListAdapter(it) }
+        rateListAdapter?.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         binding.currencyRateList.adapter = rateListAdapter
         binding.currencyRateList.setHasFixedSize(true)
 
@@ -68,20 +92,10 @@ class CurrencyRateListFragment : Fragment() {
                 binding.swipeToRefresh.isRefreshing = false
             }
 
+            wasLoaded = true
+
             rateListAdapter?.setValuteList(it)
         })
-
-        context?.let { it ->
-            viewModel.restoreData(it)!!.observe(this, { 
-            
-        }) }
-
-        context?.let { it ->
-            viewModel.restoreData(it)!!.observe(this, {
-            viewModel.restoreFromData(it)
-        }) }
-
-        context?.let { viewModel.loadLatestData(it) }
     }
 
     override fun onDestroy() {
